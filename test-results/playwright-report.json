@@ -1,0 +1,187 @@
+{
+  "config": {
+    "configFile": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/playwright.config.ts",
+    "rootDir": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "selfHealingOptions": {
+        "areElementIdsVolatile": false,
+        "disableSelectorFailover": false
+      },
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "github",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/playwright-report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "selfHealingOptions": {
+            "areElementIdsVolatile": false,
+            "disableSelectorFailover": false
+          },
+          "actualWorkers": 1
+        },
+        "id": "flow-ad14948c",
+        "name": "flow-ad14948c",
+        "testDir": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "tests/flow-ad14948c.spec.ts"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.53.2",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "flow-ad14948c.spec.ts",
+      "file": "flow-ad14948c.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Test for https://app.immerse.online/login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [
+                {
+                  "type": "objective",
+                  "description": "Enter the Email,kwh77974481@gmail.com, than enter the password: 2088sang**. Click on the log in and verify user lands on Dashboard home page"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "flow-ad14948c",
+              "projectName": "flow-ad14948c",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 58579,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "09:51:31.527 [-] INFO  Setup GOOGLE_GEMINI client for model: gemini-2.5-flash\n"
+                    },
+                    {
+                      "text": "09:51:39.108 [-] INFO  Scanning \"/Users/woo-hyun/Library/Application Support/Donobu Studio/plugins\" for plugins...\n"
+                    },
+                    {
+                      "text": "09:51:39.108 [-] INFO  Loaded 0 custom tool(s) from plugins.\n"
+                    },
+                    {
+                      "text": "09:51:39.110 [-] INFO  Taking action: inputText\n"
+                    },
+                    {
+                      "text": "09:52:04.792 [-] INFO  The inputText tool completed in 25681ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Inputted text 'kwh77974481@gmail.com' into: <input type=\\\"email\\\" placeholder=\\\"Email\\\" class=\\\"c-gtNREi\\\" style=\\\"\\\">\",\"metadata\":{\"element\":[\"#__next > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div:nth-of-type(1) > input\",\"[placeholder='Email']\",\"input.c-gtNREi\",\"div.c-iGVwqn > div:nth-of-type(2) > div:nth-of-type(1) > input\",\"div.c-gqwkJN > div > div:nth-of-type(2) > div:nth-of-type(1) > input\",\"div.c-ejwOqd > div > div > div:nth-of-type(2) > div:nth-of-type(1) > input\",\"body > div:nth-of-type(1) > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div:nth-of-type(1) > input\"],\"frame\":null,\"usedSelector\":\"#__next > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div:nth-of-type(1) > input\"}}\n"
+                    },
+                    {
+                      "text": "09:52:04.793 [-] INFO  Taking action: inputText\n"
+                    },
+                    {
+                      "text": "09:52:18.234 [-] INFO  The inputText tool completed in 13441ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Inputted text '2088sang**' into: <input type=\\\"password\\\" class=\\\"mantine-13e8zn2 mantine-PasswordInput-innerInput\\\" id=\\\"mantine-r1\\\" data-testid=\\\"passwordinput\\\" placeholder=\\\"Password\\\" style=\\\"\\\">\",\"metadata\":{\"element\":[\"#mantine-r1\",\"[data-testid='passwordinput']\",\"[placeholder='Password']\",\"input.mantine-13e8zn2\",\"div.mantine-PasswordInput-input > input\",\"div.mantine-Input-wrapper > div:nth-of-type(1) > input\",\"div.mantine-InputWrapper-root > div > div:nth-of-type(1) > input\",\"div.c-iGVwqn > div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(1) > input\",\"div.c-gqwkJN > div > div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(1) > input\",\"body > div:nth-of-type(1) > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(1) > input\"],\"frame\":null,\"usedSelector\":\"#mantine-r1\"}}\n"
+                    },
+                    {
+                      "text": "09:52:18.235 [-] INFO  Taking action: click\n"
+                    },
+                    {
+                      "text": "09:52:22.559 [-] INFO  The click tool completed in 4324ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Clicked on: <button class=\\\"c-dpWHaL\\\">Login</button>\",\"metadata\":{\"element\":[\"#__next > div:nth-of-type(1) > div > div > button\",\".//button[normalize-space(.)='Login']\",\"button.c-dpWHaL\",\"div.c-iGVwqn > button\",\"div.c-gqwkJN > div > button\",\"div.c-ejwOqd > div > div > button\",\"html > body > div:nth-of-type(1) > div:nth-of-type(1) > div > div > button\",\"body > div:nth-of-type(1) > div:nth-of-type(1) > div > div > button\"],\"frame\":null,\"usedSelector\":\"#__next > div:nth-of-type(1) > div > div > button\"}}\n"
+                    },
+                    {
+                      "text": "09:52:22.560 [-] INFO  Taking action: analyzePageText\n"
+                    },
+                    {
+                      "text": "09:52:27.099 [-] INFO  The analyzePageText tool completed in 4539ms with outcome {\"isSuccessful\":true,\"forLlm\":\"No, there are no error messages on the page indicating why the login failed. The provided text only contains standard login page elements like \\\"Forgot password,\\\" \\\"Login,\\\" and \\\"Sign Up!\\\"\",\"metadata\":{\"analysis\":\"No, there are no error messages on the page indicating why the login failed. The provided text only contains standard login page elements like \\\"Forgot password,\\\" \\\"Login,\\\" and \\\"Sign Up!\\\"\"}}\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2025-09-15T00:51:27.086Z",
+                  "annotations": [
+                    {
+                      "type": "objective",
+                      "description": "Enter the Email,kwh77974481@gmail.com, than enter the password: 2088sang**. Click on the log in and verify user lands on Dashboard home page"
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/test-results/flow-ad14948c-Test-for-https-app-immerse-online-login-flow-ad14948c/test-finished-1.png"
+                    },
+                    {
+                      "name": "test-flow-metadata.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJpZCI6ICJjMTlkZGMxMS0wOTFkLTQyYWMtYjkyMi0zOTYxOGU5ZDFmMTIiLAogICJuYW1lIjogIlRlc3QgZm9yIGh0dHBzOi8vYXBwLmltbWVyc2Uub25saW5lL2xvZ2luIiwKICAiY3JlYXRlZFdpdGhEb25vYnVWZXJzaW9uIjogIjEzODQiLAogICJicm93c2VyIjogewogICAgInBlcnNpc3RTdGF0ZSI6IHRydWUsCiAgICAidXNpbmciOiB7CiAgICAgICJ0eXBlIjogImRldmljZSIsCiAgICAgICJkZXZpY2VOYW1lIjogIkRlc2t0b3AgQ2hyb21pdW0iLAogICAgICAiaGVhZGxlc3MiOiBmYWxzZQogICAgfQogIH0sCiAgImVudlZhcnMiOiBbXSwKICAiZ3B0Q29uZmlnTmFtZSI6IG51bGwsCiAgImhhc0dwdENvbmZpZ05hbWVPdmVycmlkZSI6IGZhbHNlLAogICJjdXN0b21Ub29scyI6IG51bGwsCiAgImRlZmF1bHRNZXNzYWdlRHVyYXRpb24iOiAwLAogICJydW5Nb2RlIjogIkRFVEVSTUlOSVNUSUMiLAogICJpc0NvbnRyb2xQYW5lbEVuYWJsZWQiOiBmYWxzZSwKICAiY2FsbGJhY2tVcmwiOiBudWxsLAogICJ0YXJnZXRXZWJzaXRlIjogImh0dHBzOi8vYXBwLmltbWVyc2Uub25saW5lL2xvZ2luIiwKICAib3ZlcmFsbE9iamVjdGl2ZSI6ICJFbnRlciB0aGUgRW1haWwsa3doNzc5NzQ0ODFAZ21haWwuY29tLCB0aGFuIGVudGVyIHRoZSBwYXNzd29yZDogMjA4OHNhbmcqKi4gQ2xpY2sgb24gdGhlIGxvZyBpbiBhbmQgdmVyaWZ5IHVzZXIgbGFuZHMgb24gRGFzaGJvYXJkIGhvbWUgcGFnZSIsCiAgImFsbG93ZWRUb29scyI6IFtdLAogICJyZXN1bHRKc29uU2NoZW1hIjogbnVsbCwKICAicmVzdWx0IjogbnVsbCwKICAiaW5wdXRUb2tlbnNVc2VkIjogMTE2LAogICJjb21wbGV0aW9uVG9rZW5zVXNlZCI6IDM4LAogICJtYXhUb29sQ2FsbHMiOiBudWxsLAogICJzdGFydGVkQXQiOiAxNzU3ODk3NDkxNTQyLAogICJjb21wbGV0ZWRBdCI6IDE3NTc4OTc1NDcyMDUsCiAgInN0YXRlIjogIlNVQ0NFU1MiLAogICJuZXh0U3RhdGUiOiBudWxsCn0="
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/test-results/flow-ad14948c-Test-for-https-app-immerse-online-login-flow-ad14948c/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "848c7711cbf51c6baf2d-39cca3870d43e1607b27",
+          "file": "flow-ad14948c.spec.ts",
+          "line": 22,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-09-15T00:51:25.859Z",
+    "duration": 62464.32000000001,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
