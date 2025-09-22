@@ -3,7 +3,7 @@
     "configFile": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/playwright.config.ts",
     "rootDir": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/tests",
     "forbidOnly": false,
-    "fullyParallel": false,
+    "fullyParallel": true,
     "globalSetup": null,
     "globalTeardown": null,
     "globalTimeout": 0,
@@ -11,29 +11,21 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "selfHealingOptions": {
-        "areElementIdsVolatile": false,
-        "disableSelectorFailover": false
-      },
       "actualWorkers": 1
     },
     "preserveOutput": "always",
     "reporter": [
       [
-        "github",
-        null
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
       ],
       [
         "json",
         {
           "outputFile": "test-results/playwright-report.json"
-        }
-      ],
-      [
-        "html",
-        {
-          "outputFolder": "playwright-report",
-          "open": "never"
         }
       ]
     ],
@@ -48,18 +40,46 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "selfHealingOptions": {
-            "areElementIdsVolatile": false,
-            "disableSelectorFailover": false
-          },
           "actualWorkers": 1
         },
-        "id": "flow-ad14948c",
-        "name": "flow-ad14948c",
+        "id": "chromium",
+        "name": "chromium",
         "testDir": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/tests",
         "testIgnore": [],
         "testMatch": [
-          "tests/flow-ad14948c.spec.ts"
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      },
+      {
+        "outputDir": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      },
+      {
+        "outputDir": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
         "timeout": 80000
       }
@@ -73,13 +93,13 @@
   },
   "suites": [
     {
-      "title": "flow-ad14948c.spec.ts",
-      "file": "flow-ad14948c.spec.ts",
+      "title": "sort-columns-by-tos-on-learners-tab.spec.ts",
+      "file": "sort-columns-by-tos-on-learners-tab.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "Test for https://app.immerse.online/login",
+          "title": "sort-columns-by-tos-on-learners-tab",
           "ok": true,
           "tags": [],
           "tests": [
@@ -88,78 +108,102 @@
               "annotations": [
                 {
                   "type": "objective",
-                  "description": "Enter the Email,kwh77974481@gmail.com, than enter the password: 2088sang**. Click on the log in and verify user lands on Dashboard home page"
+                  "description": "Sort columns by TOS on Learners tab\n\nClick on Learners Tab\nChange Timeframe to \"All Time\"\nWait for Learners to load\nChange \"Per Page\" to 50\nWait for Learners to load\nOnce loaded, click on TOS once\nAssert that the TOS column is sorted in descending order"
                 }
               ],
               "expectedStatus": "passed",
-              "projectId": "flow-ad14948c",
-              "projectName": "flow-ad14948c",
+              "projectId": "chromium",
+              "projectName": "chromium",
               "results": [
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 58579,
+                  "duration": 73257,
                   "errors": [],
                   "stdout": [],
                   "stderr": [
                     {
-                      "text": "09:51:31.527 [-] INFO  Setup GOOGLE_GEMINI client for model: gemini-2.5-flash\n"
+                      "text": "12:29:12.935 [-] INFO  Setup GOOGLE_GEMINI client for model: gemini-2.5-flash\n"
                     },
                     {
-                      "text": "09:51:39.108 [-] INFO  Scanning \"/Users/woo-hyun/Library/Application Support/Donobu Studio/plugins\" for plugins...\n"
+                      "text": "12:29:25.297 [-] INFO  Scanning \"/Users/woo-hyun/Library/Application Support/Donobu Studio/plugins\" for plugins...\n"
                     },
                     {
-                      "text": "09:51:39.108 [-] INFO  Loaded 0 custom tool(s) from plugins.\n"
+                      "text": "12:29:25.298 [-] INFO  Loaded 0 custom tool(s) from plugins.\n"
                     },
                     {
-                      "text": "09:51:39.110 [-] INFO  Taking action: inputText\n"
+                      "text": "12:29:25.301 [-] INFO  Taking action: click\n"
                     },
                     {
-                      "text": "09:52:04.792 [-] INFO  The inputText tool completed in 25681ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Inputted text 'kwh77974481@gmail.com' into: <input type=\\\"email\\\" placeholder=\\\"Email\\\" class=\\\"c-gtNREi\\\" style=\\\"\\\">\",\"metadata\":{\"element\":[\"#__next > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div:nth-of-type(1) > input\",\"[placeholder='Email']\",\"input.c-gtNREi\",\"div.c-iGVwqn > div:nth-of-type(2) > div:nth-of-type(1) > input\",\"div.c-gqwkJN > div > div:nth-of-type(2) > div:nth-of-type(1) > input\",\"div.c-ejwOqd > div > div > div:nth-of-type(2) > div:nth-of-type(1) > input\",\"body > div:nth-of-type(1) > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div:nth-of-type(1) > input\"],\"frame\":null,\"usedSelector\":\"#__next > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div:nth-of-type(1) > input\"}}\n"
+                      "text": "12:29:29.782 [-] INFO  The click tool completed in 4482ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Clicked on: <button class=\\\"mantine-UnstyledButton-root mantine-Button-root mantine-qiiaq4\\\" type=\\\"button\\\" data-button=\\\"true\\\" data-testid=\\\"layout-header-learners-button\\\">Learners</button>\",\"metadata\":{\"element\":[\"#__next > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > button:nth-of-type(2)\",\"[data-testid='layout-header-learners-button']\",\".//button[normalize-space(.)='Learners']\",\"div.mantine-xg7kom > button:nth-of-type(2)\",\"div.mantine-yx7xue > div:nth-of-type(1) > button:nth-of-type(2)\",\"div.mantine-2pm4e4 > div > div:nth-of-type(1) > button:nth-of-type(2)\",\"div.mantine-le2skq > div:nth-of-type(1) > div > div:nth-of-type(1) > button:nth-of-type(2)\",\"div.c-ejwOqd > div > div:nth-of-type(1) > div > div:nth-of-type(1) > button:nth-of-type(2)\",\"body > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > button:nth-of-type(2)\",\"[data-button='true']\",\"button.mantine-UnstyledButton-root\"],\"frame\":null,\"usedSelector\":\"#__next > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > button:nth-of-type(2)\"}}\n"
                     },
                     {
-                      "text": "09:52:04.793 [-] INFO  Taking action: inputText\n"
+                      "text": "12:29:29.783 [-] INFO  Taking action: click\n"
                     },
                     {
-                      "text": "09:52:18.234 [-] INFO  The inputText tool completed in 13441ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Inputted text '2088sang**' into: <input type=\\\"password\\\" class=\\\"mantine-13e8zn2 mantine-PasswordInput-innerInput\\\" id=\\\"mantine-r1\\\" data-testid=\\\"passwordinput\\\" placeholder=\\\"Password\\\" style=\\\"\\\">\",\"metadata\":{\"element\":[\"#mantine-r1\",\"[data-testid='passwordinput']\",\"[placeholder='Password']\",\"input.mantine-13e8zn2\",\"div.mantine-PasswordInput-input > input\",\"div.mantine-Input-wrapper > div:nth-of-type(1) > input\",\"div.mantine-InputWrapper-root > div > div:nth-of-type(1) > input\",\"div.c-iGVwqn > div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(1) > input\",\"div.c-gqwkJN > div > div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(1) > input\",\"body > div:nth-of-type(1) > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(1) > input\"],\"frame\":null,\"usedSelector\":\"#mantine-r1\"}}\n"
+                      "text": "12:29:34.105 [-] INFO  The click tool completed in 4322ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Clicked on: <input class=\\\"mantine-Input-input mantine-Select-input mantine-ye2q1m\\\" autocomplete=\\\"off\\\" type=\\\"search\\\" id=\\\"mantine-rg\\\" placeholder=\\\"\\\" aria-autocomplete=\\\"list\\\" readonly=\\\"\\\" data-mantine-stop-propagation=\\\"false\\\" aria-invalid=\\\"false\\\" value=\\\"Last 30 days\\\" style=\\\"\\\">\",\"metadata\":{\"element\":[\"#mantine-rg\",\"div:nth-of-type(2) > div > div > [data-mantine-stop-propagation='false']\",\"div:nth-of-type(2) > div > div > input.mantine-Input-input\",\"div.mantine-1rlbqtv > div:nth-of-type(2) > div > div > input\",\"div.mantine-1hv2vg > div:nth-of-type(2) > div:nth-of-type(2) > div > div > input\",\"div.mantine-1ywgif7 > div > div:nth-of-type(2) > div:nth-of-type(2) > div > div > input\",\"div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(2) > div:nth-of-type(2) > div > div > input\",\"body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div:nth-of-type(2) > div > div > input\",\"[data-mantine-stop-propagation='false']\",\"input.mantine-Input-input\"],\"frame\":null,\"usedSelector\":\"#mantine-rg\"}}\n"
                     },
                     {
-                      "text": "09:52:18.235 [-] INFO  Taking action: click\n"
+                      "text": "12:29:34.106 [-] INFO  Taking action: click\n"
                     },
                     {
-                      "text": "09:52:22.559 [-] INFO  The click tool completed in 4324ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Clicked on: <button class=\\\"c-dpWHaL\\\">Login</button>\",\"metadata\":{\"element\":[\"#__next > div:nth-of-type(1) > div > div > button\",\".//button[normalize-space(.)='Login']\",\"button.c-dpWHaL\",\"div.c-iGVwqn > button\",\"div.c-gqwkJN > div > button\",\"div.c-ejwOqd > div > div > button\",\"html > body > div:nth-of-type(1) > div:nth-of-type(1) > div > div > button\",\"body > div:nth-of-type(1) > div:nth-of-type(1) > div > div > button\"],\"frame\":null,\"usedSelector\":\"#__next > div:nth-of-type(1) > div > div > button\"}}\n"
+                      "text": "12:29:38.462 [-] INFO  The click tool completed in 4356ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Clicked on: <div class=\\\"mantine-12zgr9 mantine-Select-item\\\" id=\\\"mantine-rg-5\\\" role=\\\"option\\\" tabindex=\\\"-1\\\" aria-selected=\\\"false\\\">All Time</div>\",\"metadata\":{\"element\":[\"#mantine-rg-5\",\"#mantine-rg-items > div:nth-of-type(1) > div > div > div:nth-of-type(6)\",\".//div[normalize-space(.)='All Time']\",\"div.mantine-1325v3c > div:nth-of-type(6)\",\"div.mantine-xlwgkm > div > div > div:nth-of-type(6)\",\"div.mantine-Select-dropdown > div > div > div:nth-of-type(1) > div > div > div:nth-of-type(6)\",\"body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(1) > div > div > div:nth-of-type(6)\",\"[role='option']\",\"div.mantine-12zgr9\"],\"frame\":null,\"usedSelector\":\"#mantine-rg-5\"}}\n"
                     },
                     {
-                      "text": "09:52:22.560 [-] INFO  Taking action: analyzePageText\n"
+                      "text": "12:29:43.464 [-] INFO  Taking action: scrollPage\n"
                     },
                     {
-                      "text": "09:52:27.099 [-] INFO  The analyzePageText tool completed in 4539ms with outcome {\"isSuccessful\":true,\"forLlm\":\"No, there are no error messages on the page indicating why the login failed. The provided text only contains standard login page elements like \\\"Forgot password,\\\" \\\"Login,\\\" and \\\"Sign Up!\\\"\",\"metadata\":{\"analysis\":\"No, there are no error messages on the page indicating why the login failed. The provided text only contains standard login page elements like \\\"Forgot password,\\\" \\\"Login,\\\" and \\\"Sign Up!\\\"\"}}\n"
+                      "text": "12:29:46.602 [-] INFO  The scrollPage tool completed in 3138ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Scrolled DOWN <html lang=\\\"en\\\" style=\\\"\\\">Immerse - Dashboard(function(w,d...</html>\",\"metadata\":{\"element\":[\"html\"],\"frame\":null,\"usedSelector\":\"html\"}}\n"
+                    },
+                    {
+                      "text": "12:29:46.603 [-] INFO  Taking action: click\n"
+                    },
+                    {
+                      "text": "12:29:53.111 [-] INFO  The click tool completed in 6508ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Clicked on: <button class=\\\"mantine-UnstyledButton-root mantine-Button-root mantine-2plf1s\\\" type=\\\"button\\\" data-button=\\\"true\\\" data-testid=\\\"learners-limit-dropdown\\\" aria-haspopup=\\\"menu\\\" aria-expanded=\\\"false\\\" aria-controls=\\\"mantine-r5n-dropdown\\\" id=\\\"mantine-r5n-target\\\">10</button>\",\"metadata\":{\"element\":[\"#mantine-rl-target\",\"#__next > div > div > div:nth-of-type(2) > div > div:nth-of-type(4) > div:nth-of-type(1) > button\",\"[data-testid='learners-limit-dropdown']\",\".//button[normalize-space(.)='10']\",\"div:nth-of-type(4) > div:nth-of-type(1) > [data-button='true']\",\"div:nth-of-type(4) > div:nth-of-type(1) > button.mantine-UnstyledButton-root\",\"div.mantine-11argd8 > div:nth-of-type(1) > button\",\"div.mantine-1hv2vg > div:nth-of-type(4) > div:nth-of-type(1) > button\",\"div.mantine-1ywgif7 > div > div:nth-of-type(4) > div:nth-of-type(1) > button\",\"div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(4) > div:nth-of-type(1) > button\",\"div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(4) > div:nth-of-type(1) > button\",\"body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(4) > div:nth-of-type(1) > button\",\"[data-button='true']\",\"button.mantine-UnstyledButton-root\"],\"frame\":null,\"usedSelector\":\"[data-testid='learners-limit-dropdown']\"}}\n"
+                    },
+                    {
+                      "text": "12:29:53.112 [-] INFO  Taking action: click\n"
+                    },
+                    {
+                      "text": "12:29:59.459 [-] INFO  The click tool completed in 6347ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Clicked on: <button class=\\\"mantine-Menu-item mantine-i9wjsr\\\" type=\\\"button\\\" data-testid=\\\"learners-limit-menu-item-50\\\" tabindex=\\\"-1\\\" role=\\\"menuitem\\\" data-menu-item=\\\"true\\\">50</button>\",\"metadata\":{\"element\":[\"#mantine-rl-dropdown > div > button:nth-of-type(3)\",\"[data-testid='learners-limit-menu-item-50']\",\".//button[normalize-space(.)='50']\",\"div.mantine-11argd8 > div:nth-of-type(1) > div > div > button:nth-of-type(3)\",\"div.mantine-1hv2vg > div:nth-of-type(4) > div:nth-of-type(1) > div > div > button:nth-of-type(3)\",\"div.mantine-1ywgif7 > div > div:nth-of-type(4) > div:nth-of-type(1) > div > div > button:nth-of-type(3)\",\"div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(4) > div:nth-of-type(1) > div > div > button:nth-of-type(3)\",\"body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(4) > div:nth-of-type(1) > div > div > button:nth-of-type(3)\",\"[role='menuitem']\",\"[data-menu-item='true']\",\"button.mantine-Menu-item\"],\"frame\":null,\"usedSelector\":\"[data-testid='learners-limit-menu-item-50']\"}}\n"
+                    },
+                    {
+                      "text": "12:30:04.466 [-] INFO  Taking action: click\n"
+                    },
+                    {
+                      "text": "12:30:08.790 [-] INFO  The click tool completed in 4324ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Clicked on: <th data-testid=\\\"learners-table-header-total_time_on_site\\\" class=\\\"mantine-1lmsj13\\\">TOS (HH:MM)</th>\",\"metadata\":{\"element\":[\"[data-testid='learners-table-header-total_time_on_site']\",\"tr.mantine-t52jw9 > th:nth-of-type(8)\",\"div.mantine-ilrge8 > table > thead > tr > th:nth-of-type(8)\",\"[data-testid='learners-table'] > thead > tr > th:nth-of-type(8)\",\"div.mantine-1hv2vg > div:nth-of-type(3) > table > thead > tr > th:nth-of-type(8)\",\"div.mantine-1ywgif7 > div > div:nth-of-type(3) > table > thead > tr > th:nth-of-type(8)\",\"div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > thead > tr > th:nth-of-type(8)\",\"body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > thead > tr > th:nth-of-type(8)\",\"th.mantine-1lmsj13\"],\"frame\":null,\"usedSelector\":\"[data-testid='learners-table-header-total_time_on_site']\"}}\n"
+                    },
+                    {
+                      "text": "12:30:13.792 [-] INFO  Taking action: assert\n"
+                    },
+                    {
+                      "text": "12:30:22.891 [-] INFO  The assert tool completed in 9099ms with outcome {\"isSuccessful\":true,\"forLlm\":\"Assertion PASSED for: Assert that the 'TOS (HH:MM)' column is sorted in descending order.\\nDetails: The 'TOS (HH:MM)' column values are extracted and converted to total seconds for comparison. The values are: 67:23, 65:27, 64:58, 64:47, 63:51, 63:07, 62:41, 62:38, 61:38, 61:24, 60:59, 60:57, 60:36, 60:33, 59:56, 58:49, 58:41, 58:23, 57:57, 57:50, 56:33, 56:21, 55:29, 54:49, 54:44, 54:26, 53:26, 53:22, 52:47, 51:19, 49:24, 48:49, 31:48, 31:29, 30:24, 30:02, 28:49, 28:41, 28:16, 27:27, 27:06, 26:19, 26:06. All these numerical values are in descending order. The 'n/a' entries appear at the end of the list, which is consistent with a descending sort where non-comparable values are grouped last.\",\"metadata\":{\"details\":\"The 'TOS (HH:MM)' column values are extracted and converted to total seconds for comparison. The values are: 67:23, 65:27, 64:58, 64:47, 63:51, 63:07, 62:41, 62:38, 61:38, 61:24, 60:59, 60:57, 60:36, 60:33, 59:56, 58:49, 58:41, 58:23, 57:57, 57:50, 56:33, 56:21, 55:29, 54:49, 54:44, 54:26, 53:26, 53:22, 52:47, 51:19, 49:24, 48:49, 31:48, 31:29, 30:24, 30:02, 28:49, 28:41, 28:16, 27:27, 27:06, 26:19, 26:06. All these numerical values are in descending order. The 'n/a' entries appear at the end of the list, which is consistent with a descending sort where non-comparable values are grouped last.\",\"assertionPassed\":true,\"attempt\":1}}\n"
                     }
                   ],
                   "retry": 0,
-                  "startTime": "2025-09-15T00:51:27.086Z",
+                  "startTime": "2025-09-22T03:29:08.893Z",
                   "annotations": [
                     {
                       "type": "objective",
-                      "description": "Enter the Email,kwh77974481@gmail.com, than enter the password: 2088sang**. Click on the log in and verify user lands on Dashboard home page"
+                      "description": "Sort columns by TOS on Learners tab\n\nClick on Learners Tab\nChange Timeframe to \"All Time\"\nWait for Learners to load\nChange \"Per Page\" to 50\nWait for Learners to load\nOnce loaded, click on TOS once\nAssert that the TOS column is sorted in descending order"
                     }
                   ],
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/test-results/flow-ad14948c-Test-for-https-app-immerse-online-login-flow-ad14948c/test-finished-1.png"
+                      "path": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/test-results/sort-columns-by-tos-on-lea-61a61-umns-by-tos-on-learners-tab-chromium/test-finished-1.png"
                     },
                     {
                       "name": "test-flow-metadata.json",
                       "contentType": "application/json",
-                      "body": "ewogICJpZCI6ICJjMTlkZGMxMS0wOTFkLTQyYWMtYjkyMi0zOTYxOGU5ZDFmMTIiLAogICJuYW1lIjogIlRlc3QgZm9yIGh0dHBzOi8vYXBwLmltbWVyc2Uub25saW5lL2xvZ2luIiwKICAiY3JlYXRlZFdpdGhEb25vYnVWZXJzaW9uIjogIjEzODQiLAogICJicm93c2VyIjogewogICAgInBlcnNpc3RTdGF0ZSI6IHRydWUsCiAgICAidXNpbmciOiB7CiAgICAgICJ0eXBlIjogImRldmljZSIsCiAgICAgICJkZXZpY2VOYW1lIjogIkRlc2t0b3AgQ2hyb21pdW0iLAogICAgICAiaGVhZGxlc3MiOiBmYWxzZQogICAgfQogIH0sCiAgImVudlZhcnMiOiBbXSwKICAiZ3B0Q29uZmlnTmFtZSI6IG51bGwsCiAgImhhc0dwdENvbmZpZ05hbWVPdmVycmlkZSI6IGZhbHNlLAogICJjdXN0b21Ub29scyI6IG51bGwsCiAgImRlZmF1bHRNZXNzYWdlRHVyYXRpb24iOiAwLAogICJydW5Nb2RlIjogIkRFVEVSTUlOSVNUSUMiLAogICJpc0NvbnRyb2xQYW5lbEVuYWJsZWQiOiBmYWxzZSwKICAiY2FsbGJhY2tVcmwiOiBudWxsLAogICJ0YXJnZXRXZWJzaXRlIjogImh0dHBzOi8vYXBwLmltbWVyc2Uub25saW5lL2xvZ2luIiwKICAib3ZlcmFsbE9iamVjdGl2ZSI6ICJFbnRlciB0aGUgRW1haWwsa3doNzc5NzQ0ODFAZ21haWwuY29tLCB0aGFuIGVudGVyIHRoZSBwYXNzd29yZDogMjA4OHNhbmcqKi4gQ2xpY2sgb24gdGhlIGxvZyBpbiBhbmQgdmVyaWZ5IHVzZXIgbGFuZHMgb24gRGFzaGJvYXJkIGhvbWUgcGFnZSIsCiAgImFsbG93ZWRUb29scyI6IFtdLAogICJyZXN1bHRKc29uU2NoZW1hIjogbnVsbCwKICAicmVzdWx0IjogbnVsbCwKICAiaW5wdXRUb2tlbnNVc2VkIjogMTE2LAogICJjb21wbGV0aW9uVG9rZW5zVXNlZCI6IDM4LAogICJtYXhUb29sQ2FsbHMiOiBudWxsLAogICJzdGFydGVkQXQiOiAxNzU3ODk3NDkxNTQyLAogICJjb21wbGV0ZWRBdCI6IDE3NTc4OTc1NDcyMDUsCiAgInN0YXRlIjogIlNVQ0NFU1MiLAogICJuZXh0U3RhdGUiOiBudWxsCn0="
+                      "body": "ewogICJpZCI6ICI0ZWJiNGY3Ny0wMGE2LTRiMGItOTZiYS0zMzJjMGFkNGExMDgiLAogICJuYW1lIjogInNvcnQtY29sdW1ucy1ieS10b3Mtb24tbGVhcm5lcnMtdGFiIiwKICAiY3JlYXRlZFdpdGhEb25vYnVWZXJzaW9uIjogIjEzODQiLAogICJicm93c2VyIjogewogICAgInBlcnNpc3RTdGF0ZSI6IHRydWUsCiAgICAidXNpbmciOiB7CiAgICAgICJ0eXBlIjogImRldmljZSIsCiAgICAgICJkZXZpY2VOYW1lIjogIkRlc2t0b3AgQ2hyb21pdW0iLAogICAgICAiaGVhZGxlc3MiOiBmYWxzZQogICAgfQogIH0sCiAgImVudlZhcnMiOiBbXSwKICAiZ3B0Q29uZmlnTmFtZSI6IG51bGwsCiAgImhhc0dwdENvbmZpZ05hbWVPdmVycmlkZSI6IGZhbHNlLAogICJjdXN0b21Ub29scyI6IG51bGwsCiAgImRlZmF1bHRNZXNzYWdlRHVyYXRpb24iOiAwLAogICJydW5Nb2RlIjogIkRFVEVSTUlOSVNUSUMiLAogICJpc0NvbnRyb2xQYW5lbEVuYWJsZWQiOiBmYWxzZSwKICAiY2FsbGJhY2tVcmwiOiBudWxsLAogICJ0YXJnZXRXZWJzaXRlIjogImh0dHBzOi8vc3RhZ2luZy1kYXNoYm9hcmQuaW1tZXJzZS5vbmxpbmUvZGFzaGJvYXJkIiwKICAib3ZlcmFsbE9iamVjdGl2ZSI6ICJTb3J0IGNvbHVtbnMgYnkgVE9TIG9uIExlYXJuZXJzIHRhYlxuXG5DbGljayBvbiBMZWFybmVycyBUYWJcbkNoYW5nZSBUaW1lZnJhbWUgdG8gXCJBbGwgVGltZVwiXG5XYWl0IGZvciBMZWFybmVycyB0byBsb2FkXG5DaGFuZ2UgXCJQZXIgUGFnZVwiIHRvIDUwXG5XYWl0IGZvciBMZWFybmVycyB0byBsb2FkXG5PbmNlIGxvYWRlZCwgY2xpY2sgb24gVE9TIG9uY2VcbkFzc2VydCB0aGF0IHRoZSBUT1MgY29sdW1uIGlzIHNvcnRlZCBpbiBkZXNjZW5kaW5nIG9yZGVyIiwKICAiYWxsb3dlZFRvb2xzIjogW10sCiAgInJlc3VsdEpzb25TY2hlbWEiOiBudWxsLAogICJyZXN1bHQiOiBudWxsLAogICJpbnB1dFRva2Vuc1VzZWQiOiAzNjg2LAogICJjb21wbGV0aW9uVG9rZW5zVXNlZCI6IDM3NywKICAibWF4VG9vbENhbGxzIjogbnVsbCwKICAic3RhcnRlZEF0IjogMTc1ODUxMTc1Mjk0NywKICAiY29tcGxldGVkQXQiOiAxNzU4NTExODIyOTU2LAogICJzdGF0ZSI6ICJTVUNDRVNTIiwKICAibmV4dFN0YXRlIjogbnVsbAp9"
                     },
                     {
                       "name": "video",
                       "contentType": "video/webm",
-                      "path": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/test-results/flow-ad14948c-Test-for-https-app-immerse-online-login-flow-ad14948c/video.webm"
+                      "path": "/Users/woo-hyun/Desktop/KimWooHyun/capstoneDev/webTesting/test-results/sort-columns-by-tos-on-lea-61a61-umns-by-tos-on-learners-tab-chromium/video.webm"
                     }
                   ]
                 }
@@ -167,9 +211,9 @@
               "status": "expected"
             }
           ],
-          "id": "848c7711cbf51c6baf2d-39cca3870d43e1607b27",
-          "file": "flow-ad14948c.spec.ts",
-          "line": 22,
+          "id": "f5ef8af26676ea0f4992-b72474bad2209407e452",
+          "file": "sort-columns-by-tos-on-learners-tab.spec.ts",
+          "line": 30,
           "column": 5
         }
       ]
@@ -177,8 +221,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-15T00:51:25.859Z",
-    "duration": 62464.32000000001,
+    "startTime": "2025-09-22T03:29:07.532Z",
+    "duration": 75727.527,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

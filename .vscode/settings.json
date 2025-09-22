@@ -1,0 +1,11 @@
+{
+  "playwright.reuseBrowser": true,
+  "playwright.showTrace": true,
+  "playwright.testDir": "./tests",
+  "files.associations": {
+    "*.spec.ts": "typescript"
+  },
+  "typescript.preferences.includePackageJsonAutoImports": "auto"
+}
+
+
