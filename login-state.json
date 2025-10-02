@@ -2,7 +2,7 @@
   "cookies": [
     {
       "name": "__Host-next-auth.csrf-token",
-      "value": "03b4552192169f0e02a62f7ef4587261a3cf63c46d4c0dc21baf9059df8f95be%7Cde4412c82d872f6e3d42d660ae84ea32a692a52e4894c54aa5b855d005b762b5",
+      "value": "815bb613822c3ea14aedfcd80b09adfc11c42de28c9aaf29a96ff84eea99a19b%7Cffe271201de2b616ae29957efaefcb2f334ae7e79cbf0be4002a9f7647329a8a",
       "domain": "staging-dashboard.immerse.online",
       "path": "/",
       "expires": -1,
@@ -21,114 +21,114 @@
       "sameSite": "Lax"
     },
     {
-      "name": "NEXT_LOCALE",
-      "value": "ENG",
-      "domain": "staging-dashboard.immerse.online",
-      "path": "/",
-      "expires": 1789786144,
-      "httpOnly": false,
-      "secure": false,
-      "sameSite": "None"
-    },
-    {
-      "name": "mp_9756d08102e32373222a26b5a59ce73f_mixpanel",
-      "value": "%7B%22distinct_id%22%3A223528%2C%22%24device_id%22%3A%22b3cdefe9-f7a1-4e68-919c-a99a5a8a09a3%22%2C%22%24initial_referrer%22%3A%22%24direct%22%2C%22%24initial_referring_domain%22%3A%22%24direct%22%2C%22__mps%22%3A%7B%7D%2C%22__mpso%22%3A%7B%7D%2C%22__mpus%22%3A%7B%7D%2C%22__mpa%22%3A%7B%7D%2C%22__mpu%22%3A%7B%7D%2C%22__mpr%22%3A%5B%5D%2C%22__mpap%22%3A%5B%5D%2C%22%24user_id%22%3A223528%7D",
-      "domain": ".immerse.online",
-      "path": "/",
-      "expires": 1789786216,
-      "httpOnly": false,
-      "secure": false,
-      "sameSite": "None"
-    },
-    {
-      "name": "ajs_anonymous_id",
-      "value": "08dc9ab2-99d2-4ddf-8c9a-8af30765bbb9",
-      "domain": ".immerse.online",
-      "path": "/",
-      "expires": 1789786217,
-      "httpOnly": false,
-      "secure": false,
-      "sameSite": "Lax"
-    },
-    {
-      "name": "__Secure-next-auth.session-token",
-      "value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..s-eLxHWWeclpUver.XBYN0NDq9zqkZH6sqPuSqbI3c6n-f4sl9vbUa0mvVasVRgSwfe6g-YgfRy_x7keJs-ILJsSkKK8UeOGIvN1UpKgJc3msdJ3aQznFRmgmJuHBOjPX1uC5XaBuExHDx8ktn20akWBtK4jrRZlBApAK9BJdogzJTNqzGLjzS1O8_vAQaRy9j38SOXzJILkSKCsbmXotwY_q0Fp4D1PYeVxnzvxbEytqApwZZ6VbhgCsxb4I2OY3T8GHPNs_uyWF4cWfLuRyEqovs6mhH927tugqstaRX6sezzO_KgQvczLqFce0C03IzVOIFQFiJl4WA0uGy7YOWLGsQCWke6NvelKpMSoJUX6xDae-z7p-hFj5g29x2aIZ5r8OgB01j92o2cyFO0zkJ-yLi4qZMkQT4sZCoGNw7bD3lekmh5CN3dCxsabZnfWJqv6vDZso7KYiv19HpJxEzTNXPav2SwAKVrrruJVcMHyZHm2aFctsBFyGGp-MG31t0TyjKRocjgkUWxpSTUVMt3PUgeZ8KPvZFUCjE5gtjv0umrirnHGW4sOB08ZAFCis2hGilXCDWihXtOdr0DSmWbovroJgnrjI0ad-cqZhpS-fyABGZKvsufSvZX4C0hdHGQiUiaD-2PqdV2ErlpNU4ogSBkEZRGYqtShWK50oDZEkePdy6taVuz6EI0s6FnsTw5ksY27h8JXoUmIqUi2d_JQe-qxcLbAIxd1KBMtXEsHysNR5cAkscq21MCA0sFI7eyTZ6DGHua9Nt4RtXtsa6vA9SyskXKZENdpXnCQhBM5h8mz1ujK4-9SZyRwfqo8EimcoRObBsKmtNoMuvMbUncqJWLTMY0LHeAMrNApUSiZQcrr-hqQVBVehcMLHKVYNVlRpe09vX1syJUoSzga2U84afzgCW1QFXgidc4Mh6pIRkY4k.6MFAspFfeY4gFtdxdsZghg",
-      "domain": "staging-dashboard.immerse.online",
-      "path": "/",
-      "expires": 1760842219,
-      "httpOnly": true,
-      "secure": true,
-      "sameSite": "Lax"
-    },
-    {
       "name": "guest_id_marketing",
-      "value": "v1%3A175825014365930506",
+      "value": "v1%3A175860167363819927",
       "domain": ".twitter.com",
       "path": "/",
-      "expires": 1792810143,
+      "expires": 1793161673.643083,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "guest_id_ads",
-      "value": "v1%3A175825014365930506",
+      "value": "v1%3A175860167363819927",
       "domain": ".twitter.com",
       "path": "/",
-      "expires": 1792810143,
+      "expires": 1793161673.643139,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "personalization_id",
-      "value": "\"v1_JjkDNhXPKH1Brd9mDQedpg==\"",
+      "value": "\"v1_K9BEvybLylBQHBULSK9Ltg==\"",
       "domain": ".twitter.com",
       "path": "/",
-      "expires": 1792810143,
+      "expires": 1793161673.643154,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "guest_id",
-      "value": "v1%3A175825014365930506",
+      "value": "v1%3A175860167363819927",
       "domain": ".twitter.com",
       "path": "/",
-      "expires": 1792810143,
+      "expires": 1793161673.643166,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "__cf_bm",
-      "value": "UbnmQ_8KZyAYMmrLxkgsa2Ca2SU8NdwGLu.EyzrOZ_8-1758250143-1.0.1.1-_6I1tu_uUpS5Q5b2gG2fPOabRn0VCZi3Y1Tt6JKYsqRhg9VCF34i8JSsP.dgF2DIOYkWtUqgDQv68LnqoIjuwKjoUzZgap8O_yafLpoyut8",
+      "value": "8vF6beEWn9zUD_k1drUbFUQAgrDWqcsCO.V7SXK8X7Y-1758601673-1.0.1.1-4IQ0mYSVcKqDulojO9Xi63VCj2gxrz1mdspQfgsM4Bp5MaLDrlolafr_tiomaNa97H6M31aj2pDsHdh.KHVmn6F.4m8v4zKMw26EIQH19DM",
       "domain": ".twitter.com",
       "path": "/",
-      "expires": 1758251943,
+      "expires": 1758603473.643177,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "muc_ads",
-      "value": "39b63a64-2916-4c4b-b70c-c4fafbd2153c",
+      "value": "2c4ca27e-9c23-49c9-96e2-2489078ce02e",
       "domain": ".t.co",
       "path": "/",
-      "expires": 1792810143,
+      "expires": 1793161673.650544,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "__cf_bm",
-      "value": "NHc2fbXCjYqc2bU2K6WbCD64YCr52Dt18a56UlJhr3g-1758250143-1.0.1.1-l_F9O_m5YTm_3pyasctNfKU_U3YJxtZuZiPEjz8c3DQP7S8Q9cdBbNKFCdFDmg7GQIbCKE1NfbHWH_cgZGACuazedS0h86GXounzoWU_vj4",
+      "value": "XESBs67.swCcObAHrhLfNz0w10zEA9jzg_R8CMHDIEQ-1758601673-1.0.1.1-7pZ5NnVVi28YsKagllZb3lsfsWtRdL1FeDyLMrOdFsIDBw6C7_Qoowus3Xava.dNKWyCj15S1qppS9DPt_3sZ2rcrF1N5iZImGOz6R9p5AI",
       "domain": ".t.co",
       "path": "/",
-      "expires": 1758251943,
+      "expires": 1758603473.650581,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
+    },
+    {
+      "name": "NEXT_LOCALE",
+      "value": "ENG",
+      "domain": "staging-dashboard.immerse.online",
+      "path": "/",
+      "expires": 1790137674.157254,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "mp_9756d08102e32373222a26b5a59ce73f_mixpanel",
+      "value": "%7B%22distinct_id%22%3A223528%2C%22%24device_id%22%3A%223e138d40-7738-4464-bf3a-e01efcf83a4b%22%2C%22%24initial_referrer%22%3A%22%24direct%22%2C%22%24initial_referring_domain%22%3A%22%24direct%22%2C%22__mps%22%3A%7B%7D%2C%22__mpso%22%3A%7B%7D%2C%22__mpus%22%3A%7B%7D%2C%22__mpa%22%3A%7B%7D%2C%22__mpu%22%3A%7B%7D%2C%22__mpr%22%3A%5B%5D%2C%22__mpap%22%3A%5B%5D%2C%22%24user_id%22%3A223528%7D",
+      "domain": ".immerse.online",
+      "path": "/",
+      "expires": 1790137746,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ajs_anonymous_id",
+      "value": "8dac48ac-006c-49ef-9bda-a723b846f0aa",
+      "domain": ".immerse.online",
+      "path": "/",
+      "expires": 1790137747,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__Secure-next-auth.session-token",
+      "value": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..qpYMk8tYyc2vgIPR.-xb0vQTKQ9SyPFJnfMrO2BFjtKXcZ4plFQVBFgbWWmrvjVMeCduVB3yVwB8L8kA0laRjzLmCuIozwlvFdQxg0nAvKecPNwOHw04Y4ntQpqvw7NDR1CGR6L7tj_rJcXr1zSDiOiQVd-2CbK3fPUz5LvTwawfao--PjhVb3Efe_uefX-9657rHn1iS_abWI_wEPBWyZsRrM96NduhLH5T08UGlTelo9R9pH3AIdCImK79_HySzwabLCCd170oNUN0Wdsl3M1VWf1IVqwOlaSI3WYvhfCD7Dda0l6KNyuQflLH3dq1eCMZEm-H6K77C1ZJvCO9vhkQ-vslH7Y5_0Ize_3m0Tj3QWrcpOKCEv1Jsq_-aAQsKr0hEskCnD7DcgpB6eMBlglAfxTWJjO7A3PY4EYe7E7DCyfGfmK2T8TKZPuZ5u6SIRXKShCIJKVfDpaTahqB1tZse1nqy_rtFvzf5P231Ztzarm1Tm4COI_f4ZO-GgGQS_DhO29aZ2VJIEIaSYLIz_W34SLbtAWvjsvYg3FLl3AbHwYlQ0KrRAS82iPveXWl1I9j5xvFoXLHAh9v_oGo1yrdPdYJvQUaSp5nF7xYnyl4OWY_e_252BgUFEdSqGosgHdvwuF0EXfSkuMz_GxA2JEFAFaKq95eL8quq9B_JjMhHUAAX1Z3-_4DCgQ5y_i1dXH-OkxTDsPJLdRENqPRSB6a3EweQFaT1gVoYFpOPfW-vt0npn5UHIQHRS2aHPYi86s5-ScvOE93UOoBLAXN9oVMl5GDMb8vOqDaYJiiDVxIlLPoSpvo1iF7nKB0ofc--jqXc6d_NhR0vQcevu24GMLMa_M8FGnAJkJ7pIAQhkbGjpNgV2iy2kJlnnkksnQXLdwZfElmThuHzkLqY8-z699MLLZX3o-1yduvC5r6ASkocgYI.CPjau-k1HWMPcS8GuYQr7A",
+      "domain": "staging-dashboard.immerse.online",
+      "path": "/",
+      "expires": 1761193749.37474,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
     }
   ],
   "origins": [
@@ -136,24 +136,24 @@
       "origin": "https://staging-dashboard.immerse.online",
       "localStorage": [
         {
-          "name": "__mpq_9756d08102e32373222a26b5a59ce73f_ev",
-          "value": "[{\"id\":\"pwr7g6mg98ib23d5\",\"flushAfter\":1758250226730,\"payload\":{\"event\":\"$identify\",\"properties\":{\"$os\":\"Windows\",\"$browser\":\"Firefox\",\"$referrer\":\"https://staging-dashboard.immerse.online/\",\"$referring_domain\":\"staging-dashboard.immerse.online\",\"$current_url\":\"https://staging-dashboard.immerse.online/login\",\"$browser_version\":139,\"$screen_height\":720,\"$screen_width\":1280,\"mp_lib\":\"web\",\"$lib_version\":\"2.70.0\",\"$insert_id\":\"ovu23sr43r0kwzxa\",\"time\":1758250216.73,\"mp_loader\":\"gtm\",\"distinct_id\":223528,\"$device_id\":\"b3cdefe9-f7a1-4e68-919c-a99a5a8a09a3\",\"$initial_referrer\":\"$direct\",\"$initial_referring_domain\":\"$direct\",\"$user_id\":223528,\"$anon_distinct_id\":\"$device:b3cdefe9-f7a1-4e68-919c-a99a5a8a09a3\",\"token\":\"9756d08102e32373222a26b5a59ce73f\"}}}]"
+          "name": "nextauth.message",
+          "value": "{\"event\":\"session\",\"data\":{\"trigger\":\"getSession\"},\"timestamp\":1758601749}"
         },
         {
-          "name": "__mpq_9756d08102e32373222a26b5a59ce73f_pp",
-          "value": "[{\"id\":\"nihgeegkas271r4e\",\"flushAfter\":1758250226730,\"payload\":{\"$set_once\":{\"$initial_referrer\":\"$direct\",\"$initial_referring_domain\":\"$direct\"},\"$token\":\"9756d08102e32373222a26b5a59ce73f\",\"$distinct_id\":223528,\"$device_id\":\"b3cdefe9-f7a1-4e68-919c-a99a5a8a09a3\",\"$user_id\":223528}}]"
+          "name": "__mpq_9756d08102e32373222a26b5a59ce73f_ev",
+          "value": "[]"
+        },
+        {
+          "name": "ajs_anonymous_id",
+          "value": "\"8dac48ac-006c-49ef-9bda-a723b846f0aa\""
         },
         {
           "name": "ajs_user_id",
           "value": "null"
         },
         {
-          "name": "nextauth.message",
-          "value": "{\"event\":\"session\",\"data\":{\"trigger\":\"getSession\"},\"timestamp\":1758250219}"
-        },
-        {
-          "name": "ajs_anonymous_id",
-          "value": "\"08dc9ab2-99d2-4ddf-8c9a-8af30765bbb9\""
+          "name": "__mpq_9756d08102e32373222a26b5a59ce73f_pp",
+          "value": "[]"
         }
       ]
     }
