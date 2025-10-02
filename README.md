@@ -324,6 +324,34 @@ await page.clickElement({ selector: { element: [...], frame: null } });
 15. Repeat the Verify steps for each email address that has TOS > 0
 ```
 
+**테스트 실행 결과:**
+- ✅ **상태**: 성공 (Donobu Studio 환경에서 완전 실행)
+- 📁 **로컬 파일**: `tests/Test-for-https---staging-dashboard-immerse-online.spec.ts`
+- 🎯 **검증된 사용자**: 4명의 사용자에 대해 데이터 무결성 검증 완료
+
+**검증된 데이터:**
+1. **Sample Learner (sample.learner.4@i...)**
+   - Lifetime Total: 69:44
+   - Activities Completed Total: 465
+
+2. **Sample Learner (sample.learner.6@i...)**
+   - Lifetime Total: 62:58
+   - Activities Completed Total: 439
+
+3. **Sample Coach-Learner-7**
+   - Lifetime Total: 67:21
+   - Activities Completed Total: 464
+
+4. **Sample Learner (sample.learner.9@i...)**
+   - Lifetime Total: 65:54
+   - Activities Completed Total: 498
+
+**⚠️ 발견된 문제점:**
+- **TOS 정렬 문제**: TOS 컬럼을 클릭하여 정렬했음에도 불구하고, 사용자들이 시간 순서대로 정렬되지 않음
+- **검색 순서 문제**: 69:44 → 62:58 → 67:21 → 65:54 순서로 검색되어 내림차순 정렬이 제대로 작동하지 않음
+- **예상 순서**: 69:44 → 67:21 → 65:59 → 65:54 → 62:58 (내림차순)
+- **실제 순서**: 69:44 → 62:58 → 67:21 → 65:54 (랜덤한 순서)
+
 #### 6. Learner 추가 및 온보딩 완료 테스트
 
 ```
