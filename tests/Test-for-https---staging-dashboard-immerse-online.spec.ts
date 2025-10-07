@@ -148,7 +148,7 @@ test(title, details, async ({ page }) => {
     },
   });
   // Waiting for learners to load after changing the timeframe to 'All Time'.
-  await page.waitForTimeout(10000); // 10초 대기로 증가
+  await page.waitForTimeout(10000); // Wait 10 seconds for data to load
   await page.visuallyAssert({
     assertionToTestFor:
       "Assert that the learners table is populated with data.",
@@ -203,7 +203,7 @@ test(title, details, async ({ page }) => {
     },
   });
   // Waiting for learners to load after changing the 'Per page' setting to 50.
-  await page.waitForTimeout(10000); // 10초 대기
+  await page.waitForTimeout(10000); // Wait 10 seconds
   await page.visuallyAssert({
     assertionToTestFor:
       "Assert that the learners table is populated with data and not showing '0 results'.",
@@ -253,29 +253,29 @@ test(title, details, async ({ page }) => {
       "Assert that the learners table is populated with data and not showing '0 results'.",
   });
 
-  // TOS > 0인 모든 사용자를 동적으로 찾아서 테스트
-  // 테이블의 모든 행을 가져옴
+  // Dynamically find and test all users with TOS > 0
+  // Get all table rows
   const allRows = await page
     .locator("[data-testid='learners-table'] tbody tr")
     .all();
   console.log(`\n📊 Total rows found in table: ${allRows.length}`);
 
-  // TOS > 0인 사용자만 필터링 (유효한 시간 형식만)
+  // Filter users with TOS > 0 (valid time format only)
   const usersWithTOS: Array<{ index: number; tosValue: string }> = [];
   for (let i = 0; i < allRows.length; i++) {
     const row = allRows[i];
-    // TOS 컬럼 (8번째 열)의 텍스트를 가져옴
+    // Get text from TOS column (8th column)
     const tosCell = row.locator("td:nth-child(8)");
     const tosText = await tosCell.textContent();
 
-    // TOS가 HH:MM 형식이고 00:00이 아닌 경우만 포함
+    // Include only if TOS is in HH:MM format and not 00:00
     const tosValue = tosText?.trim() || "";
-    const isValidTimeFormat = /^\d{1,3}:\d{2}$/.test(tosValue); // HH:MM 또는 HHH:MM 형식
+    const isValidTimeFormat = /^\d{1,3}:\d{2}$/.test(tosValue); // HH:MM or HHH:MM format
     const isNotZero = tosValue !== "00:00";
 
     if (isValidTimeFormat && isNotZero) {
       usersWithTOS.push({
-        index: i + 1, // 1-based index for nth-child
+        index: i + 1, // 1-based index for nth-child selector
         tosValue: tosValue,
       });
     }
@@ -292,7 +292,7 @@ test(title, details, async ({ page }) => {
       `\n=== Testing User #${i + 1} (Row ${userIndex}, TOS: ${userTOS}) ===`
     );
 
-    // Clicking on the user's row (TOS 순서대로 정렬된 n번째) - 화면 위치와 상관없이 DOM의 n번째
+    // Click on the user's row (nth in TOS sorted order) - DOM position regardless of scroll position
     await page.clickElement({
       selector: {
         element: [

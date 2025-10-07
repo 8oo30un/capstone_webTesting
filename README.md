@@ -225,14 +225,14 @@ await page.clickElement({ selector: { element: [...], frame: null } });
 
 ### B2B Dashboard 테스트
 
-| #   | 테스트명                           | 목적                                                  | URL                        | 우선순위 | 요구사항                  | 상태 | 로컬 파일                                               |
-| --- | ---------------------------------- | ----------------------------------------------------- | -------------------------- | -------- | ------------------------- | ---- | ------------------------------------------------------- |
-| 1   | 기본 로그인 테스트                 | B2B 대시보드 로그인 기능 검증                         | `dashboard.immerse.online` | Phase 1  | B2B 계정                  | ✅   | `tests/immerse-login.spec.ts`                           |
-| 2   | 데이터 로딩 검증 테스트            | 로그인 후 대시보드 데이터가 올바르게 표시되는지 검증  | `dashboard.immerse.online` | Phase 2  | B2B 계정                  | ✅   | `tests/dashboard-verify-values.spec.ts`                 |
-| 3   | Learners 탭 TOS 컬럼 정렬 테스트   | Learners 탭에서 TOS(Time on Site) 컬럼 정렬 기능 검증 | `dashboard.immerse.online` | Phase 3  | B2B 계정                  | ✅   | `tests/sort-columns-by-tos-on-learners-tab.spec.ts`     |
-| 4   | Learners 트레이 보기 테스트        | 개별 Learner의 상세 정보 트레이 기능 검증             | `dashboard.immerse.online` | Phase 3  | B2B 계정                  | ❌   | -                                                       |
-| 5   | 데이터 무결성 검증 테스트 ⭐        | TOS와 Activities Completed 데이터의 정확성 검증 (43명 자동) | `dashboard.immerse.online` | Phase 3  | B2B 계정                  | ✅   | `tests/Test-for-https---staging-dashboard-immerse-online.spec.ts` |
-| 6   | Learner 추가 및 온보딩 완료 테스트 | 새로운 Learner 추가 및 온보딩 프로세스 검증           | `dashboard.immerse.online` | Phase 4  | Admin 권한, Contract 설정 | ❌   | -                                                       |
+| #   | 테스트명                           | 목적                                                        | URL                        | 우선순위 | 요구사항                  | 상태 | 로컬 파일                                                         |
+| --- | ---------------------------------- | ----------------------------------------------------------- | -------------------------- | -------- | ------------------------- | ---- | ----------------------------------------------------------------- |
+| 1   | 기본 로그인 테스트                 | B2B 대시보드 로그인 기능 검증                               | `dashboard.immerse.online` | Phase 1  | B2B 계정                  | ✅   | `tests/immerse-login.spec.ts`                                     |
+| 2   | 데이터 로딩 검증 테스트            | 로그인 후 대시보드 데이터가 올바르게 표시되는지 검증        | `dashboard.immerse.online` | Phase 2  | B2B 계정                  | ✅   | `tests/dashboard-verify-values.spec.ts`                           |
+| 3   | Learners 탭 TOS 컬럼 정렬 테스트   | Learners 탭에서 TOS(Time on Site) 컬럼 정렬 기능 검증       | `dashboard.immerse.online` | Phase 3  | B2B 계정                  | ✅   | `tests/sort-columns-by-tos-on-learners-tab.spec.ts`               |
+| 4   | Learners 트레이 보기 테스트        | 개별 Learner의 상세 정보 트레이 기능 검증                   | `dashboard.immerse.online` | Phase 3  | B2B 계정                  | ❌   | -                                                                 |
+| 5   | 데이터 무결성 검증 테스트 ⭐       | TOS와 Activities Completed 데이터의 정확성 검증 (43명 자동) | `dashboard.immerse.online` | Phase 3  | B2B 계정                  | ✅   | `tests/Test-for-https---staging-dashboard-immerse-online.spec.ts` |
+| 6   | Learner 추가 및 온보딩 완료 테스트 | 새로운 Learner 추가 및 온보딩 프로세스 검증                 | `dashboard.immerse.online` | Phase 4  | Admin 권한, Contract 설정 | ❌   | -                                                                 |
 
 ### Web Application 테스트
 
