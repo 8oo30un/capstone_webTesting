@@ -148,6 +148,7 @@ test(title, details, async ({ page }) => {
     },
   });
   // Waiting for learners to load after changing the timeframe to 'All Time'.
+  await page.waitForTimeout(10000); // 10초 대기로 증가
   await page.visuallyAssert({
     assertionToTestFor:
       "Assert that the learners table is populated with data.",
@@ -225,15 +226,39 @@ test(title, details, async ({ page }) => {
     },
   });
   // Waiting for learners to load after sorting by TOS (HH:MM).
+  await page.waitForTimeout(3000);
+  
+  // Scroll to the top of the page to ensure we start from the first row
+  await page.scroll({
+    direction: "UP",
+    selector: {
+      element: ["html"],
+      frame: null,
+    },
+  });
+  
+  // Scroll up again to make sure we're at the very top
+  await page.scroll({
+    direction: "UP",
+    selector: {
+      element: ["html"],
+      frame: null,
+    },
+  });
+  
+  await page.waitForTimeout(2000);
+  
   await page.visuallyAssert({
     assertionToTestFor:
       "Assert that the learners table is populated with data and not showing '0 results'.",
   });
-  // Clicking on the first user's email address to view their details.
+  
+  // Clicking on the first user's row (TOS 순서대로 정렬된 첫 번째) - 화면 위치와 상관없이 DOM의 첫 번째
   await page.clickElement({
     selector: {
       element: [
-        "[data-testid='learners-table-row-189553']",
+        "[data-testid='learners-table'] tbody tr:nth-child(1)",
+        "table tbody tr:nth-child(1)",
         "div.mantine-kwn0a8 > table > tbody > tr:nth-of-type(1)",
         "[data-testid='learners-table'] > tbody > tr:nth-of-type(1)",
         "div.mantine-1hv2vg > div:nth-of-type(3) > table > tbody > tr:nth-of-type(1)",
@@ -241,7 +266,6 @@ test(title, details, async ({ page }) => {
         "div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(1)",
         "div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(1)",
         "body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(1)",
-        "tr.mantine-m1telj",
       ],
       frame: null,
     },
@@ -272,19 +296,31 @@ test(title, details, async ({ page }) => {
       frame: null,
     },
   });
-  // Clicking on the next user's email address to view their details and perform verification.
+  
+  // Scroll to the top of the page to ensure we start from the first row again
+  await page.scroll({
+    direction: "UP",
+    selector: {
+      element: ["html"],
+      frame: null,
+    },
+  });
+  
+  await page.waitForTimeout(2000);
+  
+  // Clicking on the second user's row (TOS 순서대로 정렬된 두 번째) - DOM의 두 번째 행
   await page.clickElement({
     selector: {
       element: [
-        "[data-testid='learners-table-row-189555']",
-        "div.mantine-kwn0a8 > table > tbody > tr:nth-of-type(7)",
-        "[data-testid='learners-table'] > tbody > tr:nth-of-type(7)",
-        "div.mantine-1hv2vg > div:nth-of-type(3) > table > tbody > tr:nth-of-type(7)",
-        "div.mantine-1ywgif7 > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(7)",
-        "div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(7)",
-        "div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(7)",
-        "body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(7)",
-        "tr.mantine-m1telj",
+        "[data-testid='learners-table'] tbody tr:nth-child(2)",
+        "table tbody tr:nth-child(2)",
+        "div.mantine-kwn0a8 > table > tbody > tr:nth-of-type(2)",
+        "[data-testid='learners-table'] > tbody > tr:nth-of-type(2)",
+        "div.mantine-1hv2vg > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
+        "div.mantine-1ywgif7 > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
+        "div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
+        "div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
+        "body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
       ],
       frame: null,
     },
@@ -307,19 +343,31 @@ test(title, details, async ({ page }) => {
       frame: null,
     },
   });
-  // Clicking on the next user's email address to view their details and perform verification.
+  
+  // Scroll to the top of the page to ensure we start from the first row again
+  await page.scroll({
+    direction: "UP",
+    selector: {
+      element: ["html"],
+      frame: null,
+    },
+  });
+  
+  await page.waitForTimeout(2000);
+  
+  // Clicking on the third user's row (TOS 순서대로 정렬된 세 번째) - DOM의 세 번째 행
   await page.clickElement({
     selector: {
       element: [
-        "[data-testid='learners-table-row-223506']",
-        "div.mantine-kwn0a8 > table > tbody > tr:nth-of-type(2)",
-        "[data-testid='learners-table'] > tbody > tr:nth-of-type(2)",
-        "div.mantine-1hv2vg > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
-        "div.mantine-1ywgif7 > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
-        "div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
-        "div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
-        "body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
-        "tr.mantine-m1telj",
+        "[data-testid='learners-table'] tbody tr:nth-child(3)",
+        "table tbody tr:nth-child(3)",
+        "div.mantine-kwn0a8 > table > tbody > tr:nth-of-type(3)",
+        "[data-testid='learners-table'] > tbody > tr:nth-of-type(3)",
+        "div.mantine-1hv2vg > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
+        "div.mantine-1ywgif7 > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
+        "div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
+        "div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
+        "body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
       ],
       frame: null,
     },
@@ -342,19 +390,31 @@ test(title, details, async ({ page }) => {
       frame: null,
     },
   });
-  // Clicking on the next user's email address to view their details and perform verification.
+  
+  // Scroll to the top of the page to ensure we start from the first row again
+  await page.scroll({
+    direction: "UP",
+    selector: {
+      element: ["html"],
+      frame: null,
+    },
+  });
+  
+  await page.waitForTimeout(2000);
+  
+  // Clicking on the fourth user's row (TOS 순서대로 정렬된 네 번째) - DOM의 네 번째 행
   await page.clickElement({
     selector: {
       element: [
-        "[data-testid='learners-table-row-189559']",
-        "div.mantine-kwn0a8 > table > tbody > tr:nth-of-type(3)",
-        "[data-testid='learners-table'] > tbody > tr:nth-of-type(3)",
-        "div.mantine-1hv2vg > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
-        "div.mantine-1ywgif7 > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
-        "div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
-        "div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
-        "body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
-        "tr.mantine-m1telj",
+        "[data-testid='learners-table'] tbody tr:nth-child(4)",
+        "table tbody tr:nth-child(4)",
+        "div.mantine-kwn0a8 > table > tbody > tr:nth-of-type(4)",
+        "[data-testid='learners-table'] > tbody > tr:nth-of-type(4)",
+        "div.mantine-1hv2vg > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
+        "div.mantine-1ywgif7 > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
+        "div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
+        "div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
+        "body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
       ],
       frame: null,
     },
