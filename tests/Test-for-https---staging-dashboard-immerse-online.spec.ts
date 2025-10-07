@@ -258,7 +258,7 @@ test(title, details, async ({ page }) => {
   const allRows = await page
     .locator("[data-testid='learners-table'] tbody tr")
     .all();
-  console.log(`\n📊 Total rows found in table: ${allRows.length}`);
+  console.log(`\n Total rows found in table: ${allRows.length}`);
 
   // Filter users with TOS > 0 (valid time format only)
   const usersWithTOS: Array<{ index: number; tosValue: string }> = [];
@@ -282,7 +282,7 @@ test(title, details, async ({ page }) => {
   }
 
   const numberOfUsersToTest = usersWithTOS.length;
-  console.log(`\n✅ Found ${numberOfUsersToTest} users with TOS > 0`);
+  console.log(`\n Found ${numberOfUsersToTest} users with TOS > 0`);
   console.log(`TOS values: ${usersWithTOS.map((u) => u.tosValue).join(", ")}`);
 
   for (let i = 0; i < numberOfUsersToTest; i++) {
@@ -354,6 +354,6 @@ test(title, details, async ({ page }) => {
   }
 
   console.log(
-    `\n✅ Completed testing ${numberOfUsersToTest} users with TOS > 0 in descending order!`
+    `\n Completed testing ${numberOfUsersToTest} users with TOS > 0 in descending order!`
   );
 });
