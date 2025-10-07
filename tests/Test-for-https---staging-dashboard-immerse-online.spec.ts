@@ -255,38 +255,42 @@ test(title, details, async ({ page }) => {
 
   // TOS > 0인 모든 사용자를 동적으로 찾아서 테스트
   // 테이블의 모든 행을 가져옴
-  const allRows = await page.locator("[data-testid='learners-table'] tbody tr").all();
+  const allRows = await page
+    .locator("[data-testid='learners-table'] tbody tr")
+    .all();
   console.log(`\n📊 Total rows found in table: ${allRows.length}`);
-  
+
   // TOS > 0인 사용자만 필터링 (유효한 시간 형식만)
-  const usersWithTOS = [];
+  const usersWithTOS: Array<{ index: number; tosValue: string }> = [];
   for (let i = 0; i < allRows.length; i++) {
     const row = allRows[i];
     // TOS 컬럼 (8번째 열)의 텍스트를 가져옴
-    const tosCell = row.locator('td:nth-child(8)');
+    const tosCell = row.locator("td:nth-child(8)");
     const tosText = await tosCell.textContent();
-    
+
     // TOS가 HH:MM 형식이고 00:00이 아닌 경우만 포함
-    const tosValue = tosText?.trim() || '';
+    const tosValue = tosText?.trim() || "";
     const isValidTimeFormat = /^\d{1,3}:\d{2}$/.test(tosValue); // HH:MM 또는 HHH:MM 형식
-    const isNotZero = tosValue !== '00:00';
-    
+    const isNotZero = tosValue !== "00:00";
+
     if (isValidTimeFormat && isNotZero) {
       usersWithTOS.push({
         index: i + 1, // 1-based index for nth-child
-        tosValue: tosValue
+        tosValue: tosValue,
       });
     }
   }
-  
+
   const numberOfUsersToTest = usersWithTOS.length;
   console.log(`\n✅ Found ${numberOfUsersToTest} users with TOS > 0`);
-  console.log(`TOS values: ${usersWithTOS.map(u => u.tosValue).join(', ')}`);
+  console.log(`TOS values: ${usersWithTOS.map((u) => u.tosValue).join(", ")}`);
 
   for (let i = 0; i < numberOfUsersToTest; i++) {
     const userIndex = usersWithTOS[i].index;
     const userTOS = usersWithTOS[i].tosValue;
-    console.log(`\n=== Testing User #${i + 1} (Row ${userIndex}, TOS: ${userTOS}) ===`);
+    console.log(
+      `\n=== Testing User #${i + 1} (Row ${userIndex}, TOS: ${userTOS}) ===`
+    );
 
     // Clicking on the user's row (TOS 순서대로 정렬된 n번째) - 화면 위치와 상관없이 DOM의 n번째
     await page.clickElement({
