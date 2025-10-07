@@ -253,12 +253,41 @@ test(title, details, async ({ page }) => {
       "Assert that the learners table is populated with data and not showing '0 results'.",
   });
 
-  // 10명의 사용자를 순차적으로 테스트 (TOS 순서대로)
-  const numberOfUsersToTest = 10;
+  // TOS > 0인 모든 사용자를 동적으로 찾아서 테스트
+  // 테이블의 모든 행을 가져옴
+  const allRows = await page.locator("[data-testid='learners-table'] tbody tr").all();
+  console.log(`\n📊 Total rows found in table: ${allRows.length}`);
   
-  for (let userIndex = 1; userIndex <= numberOfUsersToTest; userIndex++) {
-    console.log(`\n=== Testing User #${userIndex} ===`);
+  // TOS > 0인 사용자만 필터링 (유효한 시간 형식만)
+  const usersWithTOS = [];
+  for (let i = 0; i < allRows.length; i++) {
+    const row = allRows[i];
+    // TOS 컬럼 (8번째 열)의 텍스트를 가져옴
+    const tosCell = row.locator('td:nth-child(8)');
+    const tosText = await tosCell.textContent();
     
+    // TOS가 HH:MM 형식이고 00:00이 아닌 경우만 포함
+    const tosValue = tosText?.trim() || '';
+    const isValidTimeFormat = /^\d{1,3}:\d{2}$/.test(tosValue); // HH:MM 또는 HHH:MM 형식
+    const isNotZero = tosValue !== '00:00';
+    
+    if (isValidTimeFormat && isNotZero) {
+      usersWithTOS.push({
+        index: i + 1, // 1-based index for nth-child
+        tosValue: tosValue
+      });
+    }
+  }
+  
+  const numberOfUsersToTest = usersWithTOS.length;
+  console.log(`\n✅ Found ${numberOfUsersToTest} users with TOS > 0`);
+  console.log(`TOS values: ${usersWithTOS.map(u => u.tosValue).join(', ')}`);
+
+  for (let i = 0; i < numberOfUsersToTest; i++) {
+    const userIndex = usersWithTOS[i].index;
+    const userTOS = usersWithTOS[i].tosValue;
+    console.log(`\n=== Testing User #${i + 1} (Row ${userIndex}, TOS: ${userTOS}) ===`);
+
     // Clicking on the user's row (TOS 순서대로 정렬된 n번째) - 화면 위치와 상관없이 DOM의 n번째
     await page.clickElement({
       selector: {
@@ -276,7 +305,7 @@ test(title, details, async ({ page }) => {
         frame: null,
       },
     });
-    
+
     // Scrolling down to view the 'Activities Completed' section in the learner's detail drawer.
     await page.scroll({
       direction: "DOWN",
@@ -285,7 +314,7 @@ test(title, details, async ({ page }) => {
         frame: null,
       },
     });
-    
+
     // Extracting Time on Site and Activities Completed data from the learner's detail drawer to perform verification.
     await page.analyzePageText({
       analysisToRun:
@@ -293,7 +322,7 @@ test(title, details, async ({ page }) => {
       additionalRelevantContext:
         "The values are in HH:MM format for Time on Site and integer format for Activities Completed. The Time on Site total should be within a 4-minute tolerance.",
     });
-    
+
     // Closing the learner's detail drawer after verifying the data.
     await page.clickElement({
       selector: {
@@ -305,9 +334,9 @@ test(title, details, async ({ page }) => {
         frame: null,
       },
     });
-    
+
     // Scroll to the top of the page to ensure we start from the first row again (except for the last user)
-    if (userIndex < numberOfUsersToTest) {
+    if (i < numberOfUsersToTest - 1) {
       await page.scroll({
         direction: "UP",
         selector: {
@@ -315,10 +344,12 @@ test(title, details, async ({ page }) => {
           frame: null,
         },
       });
-      
+
       await page.waitForTimeout(2000);
     }
   }
-  
-  console.log(`\n✅ Completed testing ${numberOfUsersToTest} users in TOS order!`);
+
+  console.log(
+    `\n✅ Completed testing ${numberOfUsersToTest} users with TOS > 0 in descending order!`
+  );
 });
