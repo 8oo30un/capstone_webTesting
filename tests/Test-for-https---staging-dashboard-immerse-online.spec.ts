@@ -227,7 +227,7 @@ test(title, details, async ({ page }) => {
   });
   // Waiting for learners to load after sorting by TOS (HH:MM).
   await page.waitForTimeout(3000);
-  
+
   // Scroll to the top of the page to ensure we start from the first row
   await page.scroll({
     direction: "UP",
@@ -236,7 +236,7 @@ test(title, details, async ({ page }) => {
       frame: null,
     },
   });
-  
+
   // Scroll up again to make sure we're at the very top
   await page.scroll({
     direction: "UP",
@@ -245,220 +245,80 @@ test(title, details, async ({ page }) => {
       frame: null,
     },
   });
-  
+
   await page.waitForTimeout(2000);
-  
+
   await page.visuallyAssert({
     assertionToTestFor:
       "Assert that the learners table is populated with data and not showing '0 results'.",
   });
+
+  // 10명의 사용자를 순차적으로 테스트 (TOS 순서대로)
+  const numberOfUsersToTest = 10;
   
-  // Clicking on the first user's row (TOS 순서대로 정렬된 첫 번째) - 화면 위치와 상관없이 DOM의 첫 번째
-  await page.clickElement({
-    selector: {
-      element: [
-        "[data-testid='learners-table'] tbody tr:nth-child(1)",
-        "table tbody tr:nth-child(1)",
-        "div.mantine-kwn0a8 > table > tbody > tr:nth-of-type(1)",
-        "[data-testid='learners-table'] > tbody > tr:nth-of-type(1)",
-        "div.mantine-1hv2vg > div:nth-of-type(3) > table > tbody > tr:nth-of-type(1)",
-        "div.mantine-1ywgif7 > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(1)",
-        "div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(1)",
-        "div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(1)",
-        "body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(1)",
-      ],
-      frame: null,
-    },
-  });
-  // Scrolling down to view the 'Activities Completed' section in the learner's detail drawer.
-  await page.scroll({
-    direction: "DOWN",
-    selector: {
-      element: ["html"],
-      frame: null,
-    },
-  });
-  // Extracting Time on Site and Activities Completed data from the learner's detail drawer to perform verification.
-  await page.analyzePageText({
-    analysisToRun:
-      "Extract the following values from the current page: 'Lifetime Total (HH:MM)', 'Asynchronous Activities' (Time on Site), 'Social Events' (Time on Site), 'Trainer-Led Classes' (Time on Site), 'Other' (Time on Site), 'Asynchronous Activities' (Activities Completed), 'Social Events' (Activities Completed), 'Trainer-Led Classes' (Activities Completed), and 'Total' (Activities Completed).",
-    additionalRelevantContext:
-      "The values are in HH:MM format for Time on Site and integer format for Activities Completed. The Time on Site total should be within a 4-minute tolerance.",
-  });
-  // Closing the learner's detail drawer after verifying the data.
-  await page.clickElement({
-    selector: {
-      element: [
-        "div.mantine-w29q45 > button > svg",
-        "[role='dialog'] > div:nth-of-type(1) > div:nth-of-type(1) > button > svg",
-        "body > div:nth-of-type(8) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > button > svg",
-      ],
-      frame: null,
-    },
-  });
+  for (let userIndex = 1; userIndex <= numberOfUsersToTest; userIndex++) {
+    console.log(`\n=== Testing User #${userIndex} ===`);
+    
+    // Clicking on the user's row (TOS 순서대로 정렬된 n번째) - 화면 위치와 상관없이 DOM의 n번째
+    await page.clickElement({
+      selector: {
+        element: [
+          `[data-testid='learners-table'] tbody tr:nth-child(${userIndex})`,
+          `table tbody tr:nth-child(${userIndex})`,
+          `div.mantine-kwn0a8 > table > tbody > tr:nth-of-type(${userIndex})`,
+          `[data-testid='learners-table'] > tbody > tr:nth-of-type(${userIndex})`,
+          `div.mantine-1hv2vg > div:nth-of-type(3) > table > tbody > tr:nth-of-type(${userIndex})`,
+          `div.mantine-1ywgif7 > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(${userIndex})`,
+          `div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(${userIndex})`,
+          `div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(${userIndex})`,
+          `body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(${userIndex})`,
+        ],
+        frame: null,
+      },
+    });
+    
+    // Scrolling down to view the 'Activities Completed' section in the learner's detail drawer.
+    await page.scroll({
+      direction: "DOWN",
+      selector: {
+        element: ["html"],
+        frame: null,
+      },
+    });
+    
+    // Extracting Time on Site and Activities Completed data from the learner's detail drawer to perform verification.
+    await page.analyzePageText({
+      analysisToRun:
+        "Extract the following values from the current page: 'Lifetime Total (HH:MM)', 'Asynchronous Activities' (Time on Site), 'Social Events' (Time on Site), 'Trainer-Led Classes' (Time on Site), 'Other' (Time on Site), 'Asynchronous Activities' (Activities Completed), 'Social Events' (Activities Completed), 'Trainer-Led Classes' (Activities Completed), and 'Total' (Activities Completed).",
+      additionalRelevantContext:
+        "The values are in HH:MM format for Time on Site and integer format for Activities Completed. The Time on Site total should be within a 4-minute tolerance.",
+    });
+    
+    // Closing the learner's detail drawer after verifying the data.
+    await page.clickElement({
+      selector: {
+        element: [
+          "div.mantine-w29q45 > button > svg",
+          "[role='dialog'] > div:nth-of-type(1) > div:nth-of-type(1) > button > svg",
+          "body > div:nth-of-type(8) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > button > svg",
+        ],
+        frame: null,
+      },
+    });
+    
+    // Scroll to the top of the page to ensure we start from the first row again (except for the last user)
+    if (userIndex < numberOfUsersToTest) {
+      await page.scroll({
+        direction: "UP",
+        selector: {
+          element: ["html"],
+          frame: null,
+        },
+      });
+      
+      await page.waitForTimeout(2000);
+    }
+  }
   
-  // Scroll to the top of the page to ensure we start from the first row again
-  await page.scroll({
-    direction: "UP",
-    selector: {
-      element: ["html"],
-      frame: null,
-    },
-  });
-  
-  await page.waitForTimeout(2000);
-  
-  // Clicking on the second user's row (TOS 순서대로 정렬된 두 번째) - DOM의 두 번째 행
-  await page.clickElement({
-    selector: {
-      element: [
-        "[data-testid='learners-table'] tbody tr:nth-child(2)",
-        "table tbody tr:nth-child(2)",
-        "div.mantine-kwn0a8 > table > tbody > tr:nth-of-type(2)",
-        "[data-testid='learners-table'] > tbody > tr:nth-of-type(2)",
-        "div.mantine-1hv2vg > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
-        "div.mantine-1ywgif7 > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
-        "div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
-        "div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
-        "body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(2)",
-      ],
-      frame: null,
-    },
-  });
-  // Extracting Time on Site and Activities Completed data from the learner's detail drawer to perform verification.
-  await page.analyzePageText({
-    analysisToRun:
-      "Extract the following values from the current page: 'Lifetime Total (HH:MM)', 'Asynchronous Activities' (Time on Site), 'Social Events' (Time on Site), 'Trainer-Led Classes' (Time on Site), 'Other' (Time on Site), 'Asynchronous Activities' (Activities Completed), 'Social Events' (Activities Completed), 'Trainer-Led Classes' (Activities Completed), and 'Total' (Activities Completed).",
-    additionalRelevantContext:
-      "The values are in HH:MM format for Time on Site and integer format for Activities Completed. The Time on Site total should be within a 4-minute tolerance.",
-  });
-  // Closing the learner's detail drawer after verifying the data.
-  await page.clickElement({
-    selector: {
-      element: [
-        "div.mantine-w29q45 > button > svg",
-        "[role='dialog'] > div:nth-of-type(1) > div:nth-of-type(1) > button > svg",
-        "body > div:nth-of-type(8) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > button > svg",
-      ],
-      frame: null,
-    },
-  });
-  
-  // Scroll to the top of the page to ensure we start from the first row again
-  await page.scroll({
-    direction: "UP",
-    selector: {
-      element: ["html"],
-      frame: null,
-    },
-  });
-  
-  await page.waitForTimeout(2000);
-  
-  // Clicking on the third user's row (TOS 순서대로 정렬된 세 번째) - DOM의 세 번째 행
-  await page.clickElement({
-    selector: {
-      element: [
-        "[data-testid='learners-table'] tbody tr:nth-child(3)",
-        "table tbody tr:nth-child(3)",
-        "div.mantine-kwn0a8 > table > tbody > tr:nth-of-type(3)",
-        "[data-testid='learners-table'] > tbody > tr:nth-of-type(3)",
-        "div.mantine-1hv2vg > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
-        "div.mantine-1ywgif7 > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
-        "div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
-        "div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
-        "body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(3)",
-      ],
-      frame: null,
-    },
-  });
-  // Extracting Time on Site and Activities Completed data from the learner's detail drawer to perform verification for the current user.
-  await page.analyzePageText({
-    analysisToRun:
-      "Extract the following values from the current page: 'Lifetime Total (HH:MM)', 'Asynchronous Activities' (Time on Site), 'Social Events' (Time on Site), 'Trainer-Led Classes' (Time on Site), 'Other' (Time on Site), 'Asynchronous Activities' (Activities Completed), 'Social Events' (Activities Completed), 'Trainer-Led Classes' (Activities Completed), and 'Total' (Activities Completed).",
-    additionalRelevantContext:
-      "The values are in HH:MM format for Time on Site and integer format for Activities Completed. The Time on Site total should be within a 4-minute tolerance.",
-  });
-  // Closing the learner's detail drawer after verifying the data.
-  await page.clickElement({
-    selector: {
-      element: [
-        "div.mantine-w29q45 > button > svg",
-        "[role='dialog'] > div:nth-of-type(1) > div:nth-of-type(1) > button > svg",
-        "body > div:nth-of-type(8) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > button > svg",
-      ],
-      frame: null,
-    },
-  });
-  
-  // Scroll to the top of the page to ensure we start from the first row again
-  await page.scroll({
-    direction: "UP",
-    selector: {
-      element: ["html"],
-      frame: null,
-    },
-  });
-  
-  await page.waitForTimeout(2000);
-  
-  // Clicking on the fourth user's row (TOS 순서대로 정렬된 네 번째) - DOM의 네 번째 행
-  await page.clickElement({
-    selector: {
-      element: [
-        "[data-testid='learners-table'] tbody tr:nth-child(4)",
-        "table tbody tr:nth-child(4)",
-        "div.mantine-kwn0a8 > table > tbody > tr:nth-of-type(4)",
-        "[data-testid='learners-table'] > tbody > tr:nth-of-type(4)",
-        "div.mantine-1hv2vg > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
-        "div.mantine-1ywgif7 > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
-        "div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
-        "div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
-        "body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
-      ],
-      frame: null,
-    },
-  });
-  // Extracting Time on Site and Activities Completed data from the learner's detail drawer to perform verification for the current user.
-  await page.analyzePageText({
-    analysisToRun:
-      "Extract the following values from the current page: 'Lifetime Total (HH:MM)', 'Asynchronous Activities' (Time on Site), 'Social Events' (Time on Site), 'Trainer-Led Classes' (Time on Site), 'Other' (Time on Site), 'Asynchronous Activities' (Activities Completed), 'Social Events' (Activities Completed), 'Trainer-Led Classes' (Activities Completed), and 'Total' (Activities Completed).",
-    additionalRelevantContext:
-      "The values are in HH:MM format for Time on Site and integer format for Activities Completed. The Time on Site total should be within a 4-minute tolerance.",
-  });
-  // Closing the learner's detail drawer after verifying the data.
-  await page.clickElement({
-    selector: {
-      element: [
-        "div.mantine-w29q45 > button > svg",
-        "[role='dialog'] > div:nth-of-type(1) > div:nth-of-type(1) > button > svg",
-        "body > div:nth-of-type(8) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > button > svg",
-      ],
-      frame: null,
-    },
-  });
-  // Clicking on the next user's email address to view their details and perform verification.
-  await page.clickElement({
-    selector: {
-      element: [
-        "[data-testid='learners-table-row-189558']",
-        "div.mantine-kwn0a8 > table > tbody > tr:nth-of-type(4)",
-        "[data-testid='learners-table'] > tbody > tr:nth-of-type(4)",
-        "div.mantine-1hv2vg > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
-        "div.mantine-1ywgif7 > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
-        "div.mantine-le2skq > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
-        "div.c-ejwOqd > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
-        "body > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div:nth-of-type(3) > table > tbody > tr:nth-of-type(4)",
-        "tr.mantine-m1telj",
-      ],
-      frame: null,
-    },
-  });
-  // Extracting Time on Site and Activities Completed data from the learner's detail drawer to perform verification for the current user.
-  await page.analyzePageText({
-    analysisToRun:
-      "Extract the following values from the current page: 'Lifetime Total (HH:MM)', 'Asynchronous Activities' (Time on Site), 'Social Events' (Time on Site), 'Trainer-Led Classes' (Time on Site), 'Other' (Time on Site), 'Asynchronous Activities' (Activities Completed), 'Social Events' (Activities Completed), 'Trainer-Led Classes' (Activities Completed), and 'Total' (Activities Completed).",
-    additionalRelevantContext:
-      "The values are in HH:MM format for Time on Site and integer format for Activities Completed. The Time on Site total should be within a 4-minute tolerance.",
-  });
+  console.log(`\n✅ Completed testing ${numberOfUsersToTest} users in TOS order!`);
 });
