@@ -475,7 +475,7 @@ test(title, details, async ({ page }) => {
       ) as HTMLInputElement);
 
     if (input && input.value && input.value.includes("https")) {
-      // Extract just the URL from the value
+      // Extract the complete URL from the value
       const urlMatch = input.value.match(/https?:\/\/[^\s]+/);
       return urlMatch ? urlMatch[0] : input.value.trim();
     }
@@ -487,7 +487,7 @@ test(title, details, async ({ page }) => {
         'textarea[value*="https"]'
       ) as HTMLTextAreaElement);
     if (textarea && textarea.value && textarea.value.includes("https")) {
-      // Extract just the URL from the value
+      // Extract the complete URL from the value
       const urlMatch = textarea.value.match(/https?:\/\/[^\s]+/);
       return urlMatch ? urlMatch[0] : textarea.value.trim();
     }
@@ -589,12 +589,16 @@ test(title, details, async ({ page }) => {
       element: [
         "[name='name']",
         "[name='fullName']",
+        "[name='firstName']",
         "[placeholder*='Name']",
         "[placeholder*='name']",
-        "input[type='text']",
+        "[placeholder*='First']",
+        "[placeholder*='Full']",
+        "input[type='text']:first-of-type",
+        "input:not([type='password']):not([type='email']):not([type='hidden'])",
         "input#name",
         "input.name",
-        "input:not([type='password'])",
+        "input[data-testid*='name']",
       ],
       frame: null,
     },
@@ -602,7 +606,7 @@ test(title, details, async ({ page }) => {
 
   // Entering a password in the "Password" field.
   await page.inputText({
-    text: "SecurePass2024!@#",
+    text: "ComplexPass2024!@#$%",
     finalizeWithSubmit: false,
     selector: {
       element: [
@@ -618,7 +622,7 @@ test(title, details, async ({ page }) => {
 
   // Entering the same password in the "Confirm password" field.
   await page.inputText({
-    text: "SecurePass2024!@#",
+    text: "ComplexPass2024!@#$%",
     finalizeWithSubmit: false,
     selector: {
       element: [
@@ -648,9 +652,12 @@ test(title, details, async ({ page }) => {
     },
   });
 
+  // Wait for navigation to complete after Continue button click
+  await page.waitForTimeout(5000);
+
   // Clicking on "Skip" to skip any additional steps (if available).
   // First wait a bit for the page to load
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(3000);
 
   // Check if Skip button exists before trying to click it
   const skipButtonExists = await page.evaluate(() => {
@@ -701,9 +708,125 @@ test(title, details, async ({ page }) => {
   // Waiting for the onboarding page to load completely.
   await page.waitForTimeout(2000);
 
-  // Verifying landing at the completed onboarding page by checking for onboarding completion indicators.
+  // Wait for onboarding completion (simplified approach)
+  await page.waitForTimeout(5000);
+
+  // Simple assertion for onboarding completion
   await page.visuallyAssert({
     assertionToTestFor:
-      "Assert that the user has successfully completed onboarding and landed on the onboarding completion page.",
+      "Assert that the user has successfully completed the initial account setup and is now on the welcome page showing 'Here's what's next' with options to launch the virtual world, take placement test, and complete getting started checklist.",
+  });
+
+  // Navigate back to dashboard to verify Active status
+  await page.goto("https://staging-dashboard.immerse.online/", {
+    waitUntil: "domcontentloaded",
+    timeout: 30000,
+  });
+
+  // Wait for the dashboard to load
+  await page.waitForTimeout(3000);
+
+  // Check if redirected to login page and re-login if necessary
+  const currentUrl = page.url();
+  if (currentUrl.includes("/login")) {
+    // Re-login
+    await page.inputText({
+      text: "sample.hradmin.readwrite.6@immerse.online",
+      finalizeWithSubmit: false,
+      selector: {
+        element: [
+          "[data-testid='login-form-email-input']",
+          "[placeholder='Email']",
+        ],
+        frame: null,
+      },
+    });
+
+    await page.inputText({
+      text: "6hradminreadwrite",
+      finalizeWithSubmit: false,
+      selector: {
+        element: [
+          "[data-testid='login-form-password-input']",
+          "[placeholder='Password']",
+        ],
+        frame: null,
+      },
+    });
+
+    await page.clickElement({
+      selector: {
+        element: [
+          "[data-testid='login-form-submit-button']",
+          ".//button[normalize-space(.)='Login']",
+        ],
+        frame: null,
+      },
+    });
+
+    // Wait for navigation away from login page
+    await page.waitForFunction(() => !window.location.href.includes("/login"), {
+      timeout: 15000,
+    });
+  }
+
+  // Wait for Learners button to be visible
+  await page.waitForFunction(
+    () => {
+      const learnersBtn = document.querySelector(
+        '[data-testid="layout-header-learners-button"]'
+      );
+      return learnersBtn !== null;
+    },
+    { timeout: 15000 }
+  );
+
+  // Navigate to Learners tab
+  await page.clickElement({
+    selector: {
+      element: [
+        "[data-testid='layout-header-learners-button']",
+        ".//button[normalize-space(.)='Learners']",
+      ],
+      frame: null,
+    },
+  });
+
+  // Wait for the learners page to load
+  await page.waitForTimeout(2000);
+
+  // Search for the created learner again to verify Active status
+  await page.inputText({
+    text: createdEmail || "test.learner",
+    finalizeWithSubmit: false,
+    selector: {
+      element: [
+        "#mantine-rg",
+        "[placeholder='Search name, email, etc...']",
+        "div:nth-of-type(2) > div:nth-of-type(1) > div > div > input.mantine-Input-input",
+      ],
+      frame: null,
+    },
+  });
+
+  // Clicking on the 'Search' button to search for the newly created learner.
+  await page.clickElement({
+    selector: {
+      element: [
+        "[data-testid='learners-search-button']",
+        ".//button[normalize-space(.)='Search']",
+        "[type='submit']",
+        "button[aria-label*='Search']",
+      ],
+      frame: null,
+    },
+  });
+
+  // Wait for search results
+  await page.waitForTimeout(3000);
+
+  // Verify that the learner is now "Active"
+  await page.visuallyAssert({
+    assertionToTestFor: `Assert that the learner with email '${createdEmail}' appears in the learners table with status 'Active', indicating successful account activation after completing onboarding.`,
   });
 });
