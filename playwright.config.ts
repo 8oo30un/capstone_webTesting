@@ -16,6 +16,18 @@ export default defineConfig({
       },
       timeout: 600000, // 10분으로 증가
     },
+    {
+      name: "Add-learner-and-complete-onboarding",
+      testMatch: "tests/add-learner-and-complete-onboarding.spec.ts",
+      use: {
+        ...devices["Desktop Chromium"],
+        headless: false,
+        launchOptions: {
+          slowMo: 150, // 속도 향상 (기존 1000에서 150으로)
+        },
+      },
+      timeout: 900000, // 15분으로 증가
+    },
   ],
   use: {
     screenshot: "on",
