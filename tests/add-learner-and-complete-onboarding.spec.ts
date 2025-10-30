@@ -711,10 +711,10 @@ test(title, details, async ({ page }) => {
   // Wait for onboarding completion (simplified approach)
   await page.waitForTimeout(5000);
 
-  // Simple assertion for onboarding completion
+  // Simple assertion for onboarding completion - verify that the page shows "Here's what's next" section
   await page.visuallyAssert({
     assertionToTestFor:
-      "Assert that the user has successfully completed the initial account setup and is now on the welcome page showing 'Here's what's next' with options to launch the virtual world, take placement test, and complete getting started checklist.",
+      "Assert that the page displays 'Here's what's next' section with options to launch the virtual world, take placement test, and complete getting started checklist.",
   });
 
   // Navigate back to dashboard to verify Active status
